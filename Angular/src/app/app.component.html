@@ -1,0 +1,35 @@
+<div>
+  <h1 style="text-align: center;">My To-Do List</h1>
+  <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 20px;">
+    <input
+      type="text"
+      [(ngModel)]="input"
+      placeholder="Enter a task..."
+    />
+    <button (click)="handleAddTodo()">Add Task</button>
+    <button (click)="handleDoneTodos()">Done</button>
+    <button style="font-size: 20px; background-color: transparent; border: none; cursor: pointer;" 
+      (click)="handleRemoveTodos()">🗑️</button>
+  </div>
+  <div style="display: flex; justify-content: center; gap: 20px;">
+    <div>
+      <h2>Tasks</h2>
+      <ul>
+        <li *ngFor="let todo of todos; index as i">
+          <input
+            type="checkbox"
+            [checked]="selectedTasks.has(i)"
+            (change)="handleSelectTask(i)"
+          />
+          {{todo}}
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h2>Done</h2>
+      <ul>
+        <li *ngFor="let todo of doneTodos; index as i">{{todo}}</li>
+      </ul>
+    </div>
+  </div>
+</div>
